@@ -14,7 +14,11 @@ var renderIndex = (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));
 }
 
-app.get('/*', renderIndex);
+// app.get('/*', renderIndex);
+
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage')
+})
 
 var server = app.listen(port, function() {
     var host = server.address().address;
