@@ -30,11 +30,11 @@ gulp.task('build:server', function () {
     var tsProject = tsc.createProject('server/tsconfig.json');
     var tsResult = gulp.src('server/**/*.ts')
         .pipe(sourcemaps.init())
-        .pipe(tsc(tsProject))
+        .pipe(tsProject());
     return tsResult.js
-        .pipe(concat('server.js'))
+        // .pipe(concat('server.js'))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('build/server'))
 });
 
 gulp.task('build:client', function(){
@@ -44,7 +44,7 @@ gulp.task('build:client', function(){
         .pipe(tsc(tsProject))
     return tsResult.js
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('build/client'))
 });
 
 /**
@@ -66,7 +66,7 @@ gulp.task("compile", ["tslint"], () => {
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("build"));
+        .pipe(gulp.dest("build/client"));
 });
 
 /**
@@ -74,7 +74,7 @@ gulp.task("compile", ["tslint"], () => {
  */
 gulp.task("resources", () => {
     return gulp.src(["client/**/*", "!**/*.ts"])
-        .pipe(gulp.dest("build"));
+        .pipe(gulp.dest("build/client"));
 });
 
 /**
@@ -87,7 +87,7 @@ gulp.task("libs", () => {
         'reflect-metadata/Reflect.js',
         'systemjs/dist/system.src.js'
     ], {cwd: "node_modules/**"}) /* Glob required here. */
-        .pipe(gulp.dest("build/libs"));
+        .pipe(gulp.dest("build/client/libs"));
 });
 
 /**
@@ -115,7 +115,7 @@ gulp.task("installTypings",function(){
  * Start the express server with nodemon
  */
 gulp.task('start', function () {
-    nodemon({ script: 'build/server.js'
+    nodemon({ script: 'build/server/server.js'
         , ext: 'html js'
         , ignore: ['ignored.js']
         , tasks: ['tslint'] })
