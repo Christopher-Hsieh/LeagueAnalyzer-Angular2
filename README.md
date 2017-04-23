@@ -1,3 +1,6 @@
+[![Dependency Status](https://david-dm.org/JumpingRock/LeagueAnalyzer-Angular2.svg)](https://david-dm.org/JumpingRock/LeagueAnalyzer-Angular2)
+[![devDependency Status](https://david-dm.org/JumpingRock/LeagueAnalyzer-Angular2/dev-status.svg)](https://david-dm.org/JumpingRock/LeagueAnalyzer-Angular2#info=devDependencies)
+
 ----
 ### LeagueOfLegends-Analyzer
 
