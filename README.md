@@ -19,6 +19,8 @@ TODO: update build status and gitter to this repo
 ## Frontend
 - (DONE) Input box for summoner name
 - Display basic data
+  - Angular component calls -> Node/Express API calls Java API -> Return data
+  - Start with match history call for ranked "/api/lol/{region}/v2.2/matchlist/by-summoner/{summonerId}""
 - List of items used in Ranked - Percentage usage of items
 
 
@@ -31,6 +33,23 @@ TODO: update build status and gitter to this repo
 frontend - angular2 typescript
 middle - nodejs/express
 backend - mongoDb (java aggregate analyzer for data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Angular2 with Gulp, Typescript, and Express Server

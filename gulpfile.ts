@@ -41,7 +41,7 @@ gulp.task('build:client', function(){
     var tsProject = tsc.createProject('client/tsconfig.json');
     var tsResult = gulp.src('client/**/*.ts')
         .pipe(sourcemaps.init())
-        .pipe(tsc(tsProject))
+        .pipe(tsProject())
     return tsResult.js
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/client'))

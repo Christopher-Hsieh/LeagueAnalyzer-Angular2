@@ -12,6 +12,7 @@ import { HeroDetailComponent }  from './components/heroDetail/hero-detail.compon
 import { HomepageComponent }  from './components/homepage/homepage.component';
 
 import { HeroService }  from './services/hero.service';
+import {LeagueService} from './services/league.service';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { HeroService }  from './services/hero.service';
     HomepageComponent
   ],
   providers: [
-    HeroService
+    HeroService,
+    LeagueService
   ],
   bootstrap: [AppComponent]
 })
