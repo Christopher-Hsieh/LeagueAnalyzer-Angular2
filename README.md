@@ -17,7 +17,7 @@ TODO: update build status and gitter to this repo
 2. next find best item you had
 
 ## Frontend
-- Input box for summoner name
+- (DONE) Input box for summoner name
 - Display basic data
 - List of items used in Ranked - Percentage usage of items
 
