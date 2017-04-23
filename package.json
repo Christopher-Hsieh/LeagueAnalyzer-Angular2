@@ -49,6 +49,7 @@
     "gulp-typescript": "^3.0.1",
     "gulp-typings": "^2.0.0",
     "run-sequence": "^1.2.1",
+    "ts-node": "^3.0.2",
     "tslint": "^3.5.0",
     "typescript": "^2.2.1"
   }
