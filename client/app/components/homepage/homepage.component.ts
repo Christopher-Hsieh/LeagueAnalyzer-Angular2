@@ -40,8 +40,9 @@ export class HomepageComponent  {
     getTest() {
         this.leagueService
             .getTest(this.hero)
-            .then(hero => {
-                this.hero = hero;
+            .then(res => {
+                console.log("league.service response:"+res);
+                this.hero.name = JSON.stringify(res);
             })
             .catch(error => this.error = error); // TODO: Display error message
     }

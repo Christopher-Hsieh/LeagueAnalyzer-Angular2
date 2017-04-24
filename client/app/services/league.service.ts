@@ -21,9 +21,7 @@ export class LeagueService {
             .catch(this.handleError);
     }
 
-    getTest(hero: Hero) {
-		let headers = new Headers({
-            'Content-Type': 'application/json'});
+    getTest(hero: Hero): Promise<Hero> {
 
         return this.http.get(this.heroesUrl)
             .toPromise()
