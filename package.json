@@ -7,8 +7,9 @@
     "clean": "gulp clean",
     "compile": "gulp compile",
     "build": "gulp build",
-    "start": "concurrent --kill-others \"gulp watch\" \"gulp start\"",
-    "postinstall": "gulp installTypings"
+    "start": "concurrent --kill-others \"gulp watch\" \"node ./build/server/bin/www\"",
+    "postinstall": "gulp installTypings",
+    "heroku-postbuild": "gulp build"
   },
   "keywords": [
     "Angular2",

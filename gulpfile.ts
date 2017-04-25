@@ -118,7 +118,7 @@ gulp.task("installTypings",function(){
  * Start the express server with nodemon
  */
 gulp.task('start', function () {
-    nodemon({ script: 'build/server/server.js'
+    nodemon({ script: 'build/server/bin/www'
         , ext: 'html js'
         , ignore: ['ignored.js']
         , tasks: ['tslint'] })
