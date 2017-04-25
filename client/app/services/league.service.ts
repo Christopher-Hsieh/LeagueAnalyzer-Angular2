@@ -23,12 +23,12 @@ export class LeagueService {
 
     getTest(hero: Hero): Promise<Hero> {
 
-        return this.http.get(this.heroesUrl)
+        return this.http.get(this.heroesUrl  + '/' + hero.name)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
     }
-    
+
     private handleError(error: any) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
