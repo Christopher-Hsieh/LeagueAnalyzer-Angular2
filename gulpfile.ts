@@ -72,7 +72,7 @@ gulp.task("compile", ["tslint"], () => {
 /**
  * Copy all resources that are not TypeScript files into build directory.
  */
-gulp.task("resources", () => {
+gulp.task("clientResources", () => {
     return gulp.src(["client/**/*", "!**/*.ts"])
         .pipe(gulp.dest("build/client"));
 });
@@ -128,6 +128,14 @@ gulp.task('start', function () {
 });
 
 /**
+ * Copy bin directory for www
+ */
+gulp.task("serverResources", () => {
+    return gulp.src(["server/bin/**"])
+        .pipe(gulp.dest("build/server/bin"));
+});
+
+/**
  * Build the project.
  * 1. Clean the build directory
  * 2. Build Express server
@@ -137,7 +145,7 @@ gulp.task('start', function () {
  */
 
 gulp.task("build", function (callback) {
-    runSequence('clean', 'build:server', 'build:client', 'resources', 'libs', callback);
+    runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', 'libs', callback);
 });
 
 gulp.task("default", function (callback) {
