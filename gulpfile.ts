@@ -100,6 +100,9 @@ gulp.task('watch', function () {
     gulp.watch(["client/**/*.html", "client/**/*.css"], ['resources']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
+    gulp.watch(["server/**/*.ts"], ['compile']).on('change', function (e) {
+      console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
+    });
 });
 
 /**
