@@ -51,9 +51,11 @@ gulp.task('build:client', function(){
  * Lint all custom TypeScript files.
  */
 gulp.task('tslint', () => {
-    return gulp.src("client/app/**/*.ts")
-        .pipe(tslint())
-        .pipe(tslint.report('prose'));
+  return gulp.src("client/**/*.ts")
+    .pipe(tslint({
+      formatter: "prose"
+    }))
+    .pipe(tslint.report());
 });
 
 
@@ -73,7 +75,7 @@ gulp.task("compile", ["tslint"], () => {
  * Copy all resources that are not TypeScript files into build directory.
  */
 gulp.task("clientResources", () => {
-    return gulp.src(["client/**/*", "!**/*.ts"])
+  return gulp.src(["client/**/*", "!**/*.ts", "!client/typings", "!client/typings/**", "!client/*.json"])
         .pipe(gulp.dest("build/client"));
 });
 
