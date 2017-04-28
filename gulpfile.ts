@@ -14,7 +14,9 @@ const gulp = require("gulp"),
         concat = require('gulp-concat'),
         runSequence = require('run-sequence'),
         nodemon = require('gulp-nodemon'),
-        gulpTypings = require("gulp-typings");
+        gulpTypings = require("gulp-typings"),
+        refresh = require('gulp-refresh'),
+        shell = require('gulp-shell');
 
 /**
  * Remove build directory.
@@ -68,7 +70,8 @@ gulp.task("compile", ["tslint"], () => {
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("build/client"));
+        .pipe(gulp.dest("build/client"))
+        .pipe(refresh());
 });
 
 /**
@@ -76,7 +79,8 @@ gulp.task("compile", ["tslint"], () => {
  */
 gulp.task("clientResources", () => {
   return gulp.src(["client/**/*", "!**/*.ts", "!client/typings", "!client/typings/**", "!client/*.json"])
-        .pipe(gulp.dest("build/client"));
+        .pipe(gulp.dest("build/client"))
+        .pipe(refresh());
 });
 
 /**
@@ -96,15 +100,16 @@ gulp.task("libs", () => {
  * Watch for changes in TypeScript, HTML and CSS files.
  */
 gulp.task('watch', function () {
+    refresh.listen();
     gulp.watch(["client/**/*.ts"], ['compile']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
-    gulp.watch(["client/**/*.html", "client/**/*.css"], ['resources']).on('change', function (e) {
+    gulp.watch(["client/**/*.html", "client/**/*.css"], ['clientResources']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
-    gulp.watch(["server/**/*.ts"], ['compile']).on('change', function (e) {
-      console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
-    });
+    // gulp.watch(["server/**/*.ts"], ['compile']).on('change', function (e) {
+    //   console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
+    // });
 });
 
 /**
@@ -150,6 +155,8 @@ gulp.task("build", function (callback) {
     runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', 'libs', callback);
 });
 
-gulp.task("default", function (callback) {
-     runSequence('build', 'start', callback);
-})
+gulp.task("npmStart", shell.task('npm run start'));
+
+gulp.task("default", function () {
+  runSequence('build', 'npmStart');
+});
