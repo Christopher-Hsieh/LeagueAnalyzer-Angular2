@@ -1,5 +1,5 @@
 TODO: update build status and gitter to this repo
-[![Build status](https://ci.appveyor.com/api/projects/status/y7cp312hef8sju0w/branch/master?svg=true)](https://ci.appveyor.com/project/moizKachwala/angular2-express-mongo-gulp-node-typescript/branch/master)
+[![Build Status](https://travis-ci.org/JumpingRock/LeagueAnalyzer-Angular2.svg?branch=master)](https://travis-ci.org/JumpingRock/LeagueAnalyzer-Angular2)
 [![Gitter](https://badges.gitter.im/moizKachwala/Angular2-express-mongo-gulp-node-typescript.svg)](https://gitter.im/moizKachwala/Angular2-express-mongo-gulp-node-typescript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 --- 
