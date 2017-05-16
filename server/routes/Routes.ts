@@ -10,7 +10,7 @@ class Routes {
     get routes() {
 
         app.use("/", new BasicRoutes().routes);
-        
+
         return app;
     }
 }

@@ -115,8 +115,8 @@ gulp.task('watch', function () {
 /**
  * Install typings for server and client.
  */
-gulp.task("installTypings",function(){
-    var stream = gulp.src(["./server/typings.json","./client/typings.json"])
+gulp.task("installTypings", function(){
+    var stream = gulp.src(["./server/typings.json", "./client/typings.json"])
         .pipe(gulpTypings(null)); //will install all typingsfiles in pipeline.
     return stream; // by returning stream gulp can listen to events from the stream and knows when it is finished.
 });
@@ -130,7 +130,7 @@ gulp.task('start', function () {
         , ignore: ['ignored.js']
         , tasks: ['tslint'] })
         .on('restart', function () {
-            console.log('restarted!')
+            console.log('restarted!');
         });
 });
 
@@ -155,8 +155,8 @@ gulp.task("build", function (callback) {
     runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', 'libs', callback);
 });
 
-gulp.task("npmStart", shell.task('npm run start'));
+// gulp.task("npmStart", shell.task('npm run start'));
 
 gulp.task("default", function () {
-  runSequence('build', 'npmStart');
+    runSequence('build', 'start');
 });

@@ -7,11 +7,29 @@ import request = require("request");
 
 class BasicController {
 
+  getBuild(req: express.Request, res: express.Response): void {
+      try {
+        //console.log(req);
+        console.log("Calling http://localhost:8080/getBuilds?name=" + req.params.summonerName);
+        request('http://localhost:8080/getBuilds?name=' + req.params.summonerName, function (error, response, body) {
+          console.log('error:', error); // Print the error if one occurred
+          console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+          console.log('body:', body); // Print the HTML for the Google homepage.
+
+          res.send(body);
+        });
+
+      } catch (e)  {
+          console.log(e);
+          res.send({"error": "error in your request"});
+
+      }
+  }
+
     test(req: express.Request, res: express.Response): void {
         try {
-
             console.log("Attempting java backend request...");
-            request('https://league-analyzer-backend.herokuapp.com/summonerSimple?name=' + req.body, function (error, response, body) {
+            request('https://league-analyzer-backend.herokuapp.com/summonerSimple?name=' + req.params.name, function (error, response, body) {
               console.log('error:', error); // Print the error if one occurred
               console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
               console.log('body:', body); // Print the HTML for the Google homepage.

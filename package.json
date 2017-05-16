@@ -7,9 +7,10 @@
     "clean": "gulp clean",
     "compile": "gulp compile",
     "build": "gulp build",
-    "start": "concurrent --kill-others \"gulp watch\" \"node ./build/server/bin/www\"",
+    "start": "concurrently --kill-others \"gulp watch\" \"node ./build/server/bin/www\"",
     "postinstall": "gulp installTypings",
-    "heroku-postbuild": "gulp build"
+    "heroku-postbuild": "gulp build",
+    "dev": "gulp build && npm run start"
   },
   "keywords": [
     "Angular2",
@@ -18,7 +19,7 @@
     "Gulp",
     "Typescript"
   ],
-  "author": "Moiz Kachwala <moizk@hotmail.com>",
+  "author": "Chris Hsieh <ChrisHsieh@live.com>",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~2.4.9",

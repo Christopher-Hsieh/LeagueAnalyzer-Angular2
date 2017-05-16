@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {Hero} from "../models/hero";
+import {AggregatedBuild} from "../models/aggregatedBuild";
 
 @Injectable()
 export class LeagueService {
@@ -10,6 +11,15 @@ export class LeagueService {
     private heroesUrl = 'api/test';  // URL to web api
 
     constructor(private http: Http) { }
+
+
+    getBuild(aggregatedBuild: AggregatedBuild): Promise<AggregatedBuild> {
+      console.log("League.service.getBuild => " + aggregatedBuild.summonerName);
+      return this.http.get('api/getBuild/' + aggregatedBuild.summonerName)
+          .toPromise()
+          .then(response => response.json())
+          .catch(this.handleError);
+      }
 
     getRankedMatches(hero: Hero) {
 		let headers = new Headers({
